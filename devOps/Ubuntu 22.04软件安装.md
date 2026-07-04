@@ -31,3 +31,5 @@ python3.13 --version
 # 输出: Python 3.13.x
 ```
 
+## UV安装
+

@@ -565,6 +565,89 @@ deactivate
 
 ![image-20260704173324909](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260704173324909.png)
 
+## UV
+
+- Python包管理器和环境管理工具
+- 2024年发布的，Astral公司，用Rust编写的
+- [官方文档](https://docs.astral.sh/uv/)
+
+### MAC安装
+
+```bash
+# 安装
+# 安装路径：installing to /Users/shuzhan/.local/bin
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 根据提示，配置
+source $HOME/.local/bin/env
+
+# 查看版本
+uv --version
+
+# 升级版本
+uv self update 
+```
+
+### UV项目初始化
+
+- UV项目不需要本地提前安装python，只需要uv能联网，就能自己去下载对应的python解释器
+
+```bash
+# 初始化项目
+uv init --python 3.14                         # 在当前目录文件夹生成项目文件
+uv init erick_uv_demo --python 3.14           # 在当前文件夹，创建erick_uv_demo这个目录
+
+# 进入目录
+cd erick_uv_demo 
+
+# 添加依赖，自动更新 pyproject.toml + uv.lock）
+uv add "numpy==1.26.4"
+uv add "pyfiglet==1.0.3"
+
+# 运行脚本：自动激活 .venv, 无需source
+uv run python main.py
+
+
+# uv sync
+- 检查 uv.lock和pyproject.toml 是否一致
+- 创建/修复虚拟环境 
+       - 创建：项目到服务器上后，执行可创建虚拟环境
+       - 修复：本地虚拟环境的更新
+```
+
+```bash
+# 上传到git的清单
+- main.py           # 源文件
+
+# 核心配置文件， 定义项目元数据，依赖，构建系统
+# 鼓励修改，修改后uv sync
+- pyproject.toml   
+
+ # 强烈建议上传，          禁止手动修改
+- uv.lock       
+
+#  # 记录了python版本    尽量避免直接修改
+- .python-version  
+```
+
+![image-20260705005607009](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260705005607009.png)
+
+```bash
+# 查看对应的python解释器安装位置
+uv python dir
+/Users/shuzhan/.local/share/uv/python
+
+# 会有多个不同的版本, 可以在本地安装多个不同的python解释器
+cpython-3.13-macos-aarch64-none		cpython-3.14-macos-aarch64-none
+cpython-3.13.14-macos-aarch64-none	cpython-3.14.6-macos-aarch64-none
+```
+
+```bash
+# 切换/更新 python版本
+# 更换版本，同时更新pyproject.toml
+uv python pin 3.12 --update-requires-python
+```
+
 # 发布
 
 ## 普通方式
@@ -585,7 +668,7 @@ mkdir -p ~/projects/erick_demo
 # 把erick.py和requirements.txt上传到linux中的这个目录中
 
 # 3  创建虚拟环境      进入对应的目录结构
-python3.13 -m venv .venv
+python3.13 -m venv .venv     # .venv  虚拟环境的名字
 
 # 4. 激活虚拟环境
 source .venv/bin/activate
@@ -602,6 +685,8 @@ pip install -r requirements.txt           # -r： requirements
 # 6. 运行脚本
 python erick.py
 ```
+
+## UV
 
 
 
