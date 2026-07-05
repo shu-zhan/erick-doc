@@ -33,3 +33,13 @@ python3.13 --version
 
 ## UV安装
 
+### 官方脚本
+
+```bash
+# 安装
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 刷新路径
+source $HOME/.local/bin/env
+```
+

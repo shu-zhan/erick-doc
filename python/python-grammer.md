@@ -565,7 +565,7 @@ deactivate
 
 ![image-20260704173324909](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260704173324909.png)
 
-## UV
+# UV
 
 - Python包管理器和环境管理工具
 - 2024年发布的，Astral公司，用Rust编写的
@@ -686,7 +686,69 @@ pip install -r requirements.txt           # -r： requirements
 python erick.py
 ```
 
-## UV
+## UV + Hatchling + Wheel
+
+- Hatchling作为python的一个构建工具
+- 构建标准的wheel
+- 通过制品库的方式
+- 一般可以通过Jenkins Pipeline的方式进行校验
+
+```toml
+[build-system]
+requires = ["hatchling"]            # 👈 仅需这一个依赖
+build-backend = "hatchling.build"   # 👈 Hatch 的构建入口
+
+
+[project]
+name = "nike"                      # project-name必须和src下面的唯一子目录匹配
+version = "0.1.0"
+description = "Add your description here"
+
+
+requires-python = ">=3.14"
+
+dependencies = [
+    "numpy==2.5.1",
+    "pyfiglet==1.0.4",
+]
+```
+
+![image-20260705120946485](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260705120946485.png)
+
+### 本地构建与验证
+
+```bash
+# 清理构建制品 并且 清除一些缓存
+rm -rf dist/ && uv clean
+
+# 重建纯净环境（发布时做，日常不做）
+rm -rf .venv && uv sync
+
+# 构建 Wheel
+uv build --wheel
+```
+
+![image-20260705124419319](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260705124419319.png)
+
+### 本地隔离验证
+
+- 永远不要假设构建出来的Wheel是正确的，在一个干净的临时环境中安装并校验
+
+```bash
+# 创建临时验证环境
+uv venv /tmp/verify-nike --python 3.14
+source /tmp/verify-nike/bin/activate
+
+# 仅从本地 Wheel 安装（不联网拉取额外依赖）
+uv pip install dist/nike-*.whl
+
+# 执行核心入口点或冒烟测试
+python -m nike.main --version
+# 或运行专门的集成测试脚本
+
+# 清理
+deactivate && rm -rf /tmp/verify-nike
+```
 
 
 
