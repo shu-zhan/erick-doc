@@ -1,0 +1,57 @@
+# LangChain1.2
+
+## 单一LLM的局限
+
+- 知识受限于训练数据
+- 无法直接与外部系统交互
+- 不具备状态保持能力
+
+![](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260627110247694.png)
+
+ ## LangChain定位
+
+![image-20260627110535621](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260627110535621.png)
+
+## 场景
+
+![image-20260627110638461](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260627110638461.png)
+
+## 岗位
+
+![image-20260627110940469](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260627110940469.png)
+
+## 介绍
+
+- language chain，哈弗大学机器学习项目工程师创建
+- github：https://github.com/langchain-ai/
+- 网页：https://www.langchain.com/
+- API查询：https://reference.langchain.com/java/langsmith
+
+## 核心内容
+
+![image-20260627111634627](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260627111634627.png)
+
+- langchagin-core：官方推荐的核心API，比如Runnable, BaseMessage等
+- langchain-classic：冗余代码或不推荐使用的API
+- langchain-community：第三方集成，按需安装
+
+## 四大支柱
+
+### LancChain
+
+- 构建简单的智能体应用，无需复杂的编排需求
+
+### LangGraph
+
+- 复杂工作流的编排引擎
+
+### DeepAgent
+
+- 智能体的执行框架
+- 构建在LangChain和LangGraph之上，是智能体执行框架
+
+### LangSmith
+
+- 可视化的监控与测试平台：用于跟踪，记录，分析智能体在运行过程中的完整调用链路
+
+- 
