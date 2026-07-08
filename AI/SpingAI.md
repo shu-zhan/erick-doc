@@ -83,18 +83,6 @@
 - 目前全球最顶尖、影响力最大的 AI 公司之一。代表作是 ChatGPT 和 GPT 大模型。是整个 LLM 时代的开山鼻祖之一
 - 几乎所有大模型 API 都在模仿 OpenAI 的格式
 
-## 阿里云百炼
-
-- 会有多种多样的LLM的模型：[模型广场](https://bailian.console.aliyun.com/cn-beijing/?spm=5176.29619931.J_SEsSjsNv72yRuRFS2VknO.2.607b10d7LFm4OF&tab=model#/model-market)
-
-![image-20260213011410026](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260213011410026.png)
-
-### API KEY
-
-- 用来调用LLM的对应的权限
-
-![image-20260213011836055](https://skillset.oss-cn-shanghai.aliyuncs.com/image-20260213011836055.png)
-
 ### DeepSeek-V3.2
 
 - [OpenAI](https://bailian.console.aliyun.com/cn-beijing/?spm=5176.29619931.J_SEsSjsNv72yRuRFS2VknO.2.607b10d7LFm4OF&tab=api#/api/?type=model&url=3016807)
